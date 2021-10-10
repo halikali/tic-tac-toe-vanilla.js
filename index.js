@@ -32,6 +32,14 @@ let checkWin = () => {
   });
 };
 
+let checkWinForComputer = () => {
+  return arrayForWin.some((win) => {
+    return win.every((i) => {
+      return document.getElementById(`child-${i}`).innerText == "O";
+    });
+  });
+};
+
 let checkNull = () => {
   nullCheck = gameItems.filter((x) => x.length === 0).length;
 };
@@ -51,6 +59,13 @@ const createRamdomO = () => {
     gameItems[oIndex] = "O";
     document.getElementById(`child-${oIndex}`).innerText = "O";
     checkNull();
+    checkWinForComputer();
+    console.warn(checkWinForComputer());
+
+    if (checkWinForComputer() === true) {
+      app.innerHTML = `<h1 class="text__lose"> Oyunu Kaybettiniz </h1>`;
+      tryAgainButton.classList.add("active");
+    }
   }
 };
 
