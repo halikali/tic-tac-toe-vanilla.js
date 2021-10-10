@@ -1,0 +1,43 @@
+#game{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 150px;
+    position: relative;
+}
+.game__item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border: 1px solid red;
+    background-color: antiquewhite;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.try-again-button{
+    display: none;
+    width: 150px;
+    height: 50px;
+    background-color: antiquewhite;
+    border: 1px solid red;
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 100px;
+    
+}
+.try-again-button.active{
+    display: flex;
+  
+}
+.try-again-button:hover{
+    filter: brightness(85%);
+    transition: all .3s ease-in-out;
+}
+
