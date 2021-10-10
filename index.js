@@ -24,18 +24,10 @@ const renderDom = () => {
   );
 };
 
-let checkWin = () => {
+let checkWin = (whichPlayer) => {
   return arrayForWin.some((win) => {
     return win.every((i) => {
-      return document.getElementById(`child-${i}`).innerText == "X";
-    });
-  });
-};
-
-let checkWinForComputer = () => {
-  return arrayForWin.some((win) => {
-    return win.every((i) => {
-      return document.getElementById(`child-${i}`).innerText == "O";
+      return document.getElementById(`child-${i}`).innerText == whichPlayer;
     });
   });
 };
@@ -59,10 +51,10 @@ const createRamdomO = () => {
     gameItems[oIndex] = "O";
     document.getElementById(`child-${oIndex}`).innerText = "O";
     checkNull();
-    checkWinForComputer();
-    console.warn(checkWinForComputer());
+    checkWin("O");
+    console.log(checkWin("O"));
 
-    if (checkWinForComputer() === true) {
+    if (checkWin("O") === true) {
       app.innerHTML = `<h1 class="text__lose"> Oyunu Kaybettiniz </h1>`;
       tryAgainButton.classList.add("active");
     }
@@ -73,13 +65,13 @@ game.addEventListener("click", (event) => {
   let whichElement = Number(event.target.id.slice(-1));
   if (gameItems[whichElement] == "") {
     gameItems[whichElement] = "X";
-    checkWin();
+    checkWin("X");
     document.getElementById(`child-${whichElement}`).innerText = "X";
     if (nullCheck !== 1) {
       createRamdomO();
     }
 
-    if (checkWin() === true) {
+    if (checkWin("X") === true) {
       app.innerHTML = `<h1 class="text__win"> Oyunu Kazandınz </h1>`;
       tryAgainButton.classList.add("active");
     }
