@@ -1,9 +1,15 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 #game{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     width: 150px;
     position: relative;
+
 }
 .game__item{
     display: flex;

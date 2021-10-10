@@ -3,6 +3,7 @@ const app = document.getElementById("app"),
   tryAgainButton = document.getElementById("try-again");
 let gameItems = ["", "", "", "", "", "", "", "", ""];
 let oIndex = 0;
+let nullCheck = gameItems.length;
 let usersChoise = [];
 let arrayForWin = [
   [2, 1, 0],
@@ -14,7 +15,6 @@ let arrayForWin = [
   [7, 4, 1],
   [3, 4, 5],
 ];
-let nullCheck = gameItems.length;
 
 const renderDom = () => {
   gameItems.map((item, index) =>
@@ -33,7 +33,19 @@ let checkWin = () => {
   });
 };
 
-const tryAgain = () => {};
+let checkNull = () => {
+  nullCheck = gameItems.filter((x) => x.length === 0).length;
+};
+
+const tryAgain = () => {
+  gameItems = ["", "", "", "", "", "", "", "", ""];
+  usersChoise = [];
+  nullCheck = gameItems.length;
+  tryAgainButton.classList.remove("active");
+  renderDom();
+};
+
+tryAgainButton.addEventListener("click", tryAgain);
 
 const createRamdomO = () => {
   do {
@@ -43,7 +55,7 @@ const createRamdomO = () => {
   if (gameItems[oIndex] == "") {
     gameItems[oIndex] = "O";
     document.getElementById(`child-${oIndex}`).innerText = "O";
-    nullCheck = gameItems.filter((x) => x.length === 0).length;
+    checkNull();
   }
 };
 
@@ -52,14 +64,15 @@ game.addEventListener("click", (event) => {
   if (gameItems[whichElement] == "") {
     gameItems[whichElement] = "X";
     usersChoise.push(whichElement);
+    checkWin();
     document.getElementById(`child-${whichElement}`).innerText = "X";
     if (nullCheck !== 1) {
       createRamdomO();
-    } else {
     }
-    checkWin();
+
     if (checkWin() === true) {
       app.innerHTML = `<h1 class="text__win"> Oyunu Kazandınz </h1>`;
+      tryAgainButton.classList.add("active");
     }
   }
 });
