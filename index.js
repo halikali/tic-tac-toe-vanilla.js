@@ -37,10 +37,7 @@ let checkNull = () => {
 };
 
 const tryAgain = () => {
-  gameItems = ["", "", "", "", "", "", "", "", ""];
-  nullCheck = gameItems.length;
-  tryAgainButton.classList.remove("active");
-  renderDom();
+  location.reload();
 };
 
 tryAgainButton.addEventListener("click", tryAgain);
