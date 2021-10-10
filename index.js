@@ -4,7 +4,6 @@ const app = document.getElementById("app"),
 let gameItems = ["", "", "", "", "", "", "", "", ""];
 let oIndex = 0;
 let nullCheck = gameItems.length;
-let usersChoise = [];
 let arrayForWin = [
   [2, 1, 0],
   [2, 5, 8],
@@ -39,7 +38,6 @@ let checkNull = () => {
 
 const tryAgain = () => {
   gameItems = ["", "", "", "", "", "", "", "", ""];
-  usersChoise = [];
   nullCheck = gameItems.length;
   tryAgainButton.classList.remove("active");
   renderDom();
@@ -63,7 +61,6 @@ game.addEventListener("click", (event) => {
   let whichElement = Number(event.target.id.slice(-1));
   if (gameItems[whichElement] == "") {
     gameItems[whichElement] = "X";
-    usersChoise.push(whichElement);
     checkWin();
     document.getElementById(`child-${whichElement}`).innerText = "X";
     if (nullCheck !== 1) {
