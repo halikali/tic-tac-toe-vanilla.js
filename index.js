@@ -52,7 +52,6 @@ const createRamdomO = () => {
     document.getElementById(`child-${oIndex}`).innerText = "O";
     checkNull();
     checkWin("O");
-    console.log(checkWin("O"));
 
     if (checkWin("O") === true) {
       app.innerHTML = `<h1 class="text__lose"> Oyunu Kaybettiniz </h1>`;
