@@ -2,6 +2,7 @@ const app = document.getElementById("app"),
   game = document.getElementById("game"),
   tryAgainButton = document.getElementById("try-again");
 let gameItems = ["", "", "", "", "", "", "", "", ""];
+let userCoises = [];
 let oIndex = 0;
 let nullCheck = gameItems.length;
 let arrayForWin = [
@@ -64,6 +65,7 @@ game.addEventListener("click", (event) => {
   let whichElement = Number(event.target.id.slice(-1));
   if (gameItems[whichElement] == "") {
     gameItems[whichElement] = "X";
+    userCoises.push(whichElement);
     checkWin("X");
     document.getElementById(`child-${whichElement}`).innerText = "X";
     if (nullCheck !== 1) {
@@ -72,6 +74,10 @@ game.addEventListener("click", (event) => {
 
     if (checkWin("X")) {
       app.innerHTML = `<h1 class="text__win"> Oyunu Kazandınz </h1>`;
+      tryAgainButton.classList.add("active");
+    }
+    if (userCoises.length === 5) {
+      app.innerHTML = `<h1 class="text__win"> Berabere </h1>`;
       tryAgainButton.classList.add("active");
     }
   }
