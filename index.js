@@ -53,7 +53,7 @@ const createRamdomO = () => {
     checkNull();
     checkWin("O");
 
-    if (checkWin("O") === true) {
+    if (checkWin("O")) {
       app.innerHTML = `<h1 class="text__lose"> Oyunu Kaybettiniz </h1>`;
       tryAgainButton.classList.add("active");
     }
@@ -70,7 +70,7 @@ game.addEventListener("click", (event) => {
       createRamdomO();
     }
 
-    if (checkWin("X") === true) {
+    if (checkWin("X")) {
       app.innerHTML = `<h1 class="text__win"> Oyunu Kazandınz </h1>`;
       tryAgainButton.classList.add("active");
     }
