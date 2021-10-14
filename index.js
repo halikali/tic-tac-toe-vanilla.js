@@ -77,7 +77,7 @@ game.addEventListener("click", (event) => {
       tryAgainButton.classList.add("active");
     }
     if (userCoises.length === 5) {
-      app.innerHTML = `<h1 class="text__win"> Berabere </h1>`;
+      app.innerHTML = `<h1 class="text__draw"> Berabere </h1>`;
       tryAgainButton.classList.add("active");
     }
   }
